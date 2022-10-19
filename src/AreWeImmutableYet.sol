@@ -16,7 +16,7 @@ contract AreWeImmutableYet {
      *      Returns False if the call succeeds, since the selfdestruct opcode is still valid
      *      Returns True if the call fails, since the selfdestruct opcode is no longer valid
      */
-    function areWeImmutableYet() public payable returns (bool weAreImmutable) {
+    function areWeImmutableYet() public returns (bool weAreImmutable) {
         ///@solidity memory-safe-assembly
         assembly {
             mstore(0, 0x600b5981380380925939f333FF)
