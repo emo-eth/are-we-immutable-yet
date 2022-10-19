@@ -10,7 +10,7 @@ pragma solidity ^0.8.13;
  */
 contract AreWeImmutableYet {
     /**
-     * @notice Returns true if the SELFDESTRUCT opcode is still valid.
+     * @notice Returns True if the SELFDESTRUCT opcode is no longer valid.
      *
      * @dev deploys a contract that selfdestructs when called, and tries to call the contract
      *      Returns False if the call succeeds, since the selfdestruct opcode is still valid
