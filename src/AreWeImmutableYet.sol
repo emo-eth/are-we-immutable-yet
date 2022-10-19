@@ -27,6 +27,14 @@ contract AreWeImmutableYet {
         }
     }
 
+    /**
+     * @notice Returns True if the SELFDESTRUCT opcode no longer halts execution.
+     *
+     * @dev deploys a contract that selfdestructs when called, and tries to call the contract
+     *      Returns False if the call succeeds, since the selfdestruct opcode is still valid and halts execution
+     *      Returns True if the call fails, since the call will revert if execution is not halted before the revert
+     *      opcode is called
+     */
     function areWeImmutableYet4758() public returns (bool weAreImmutable) {
         ///@solidity memory-safe-assembly
         assembly {
