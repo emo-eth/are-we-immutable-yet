@@ -17,12 +17,13 @@ contract AreWeBadOpcodeYet is AreWeImmutableYet {
         }
     }
 
-    function preDeploy() public {
+    function areWeNotHaltingYet4758() public returns (bool weAreImmutable) {
         ///@solidity memory-safe-assembly
         assembly {
-            mstore(0, 0x600b5981380380925939f333EE)
-            let addr := create2(0, 19, 13, 0)
-            // weAreImmutable := iszero(call(5010, addr, 0, 0, 0, 0, 0))
+            // if 0xFF opcode is still valid and does not stop execution, this will revert
+            mstore(0, 0x600b5981380380925939f333503D3DFD)
+            let addr := create2(0, 16, 16, 0)
+            weAreImmutable := iszero(call(5010, addr, 0, 0, 0, 0, 0))
         }
     }
 }
@@ -43,7 +44,6 @@ contract CounterTest is Test {
 
     function testAreWeImmutableYet4758() public {
         assertFalse(areWeBadOpcodeYet.areWeImmutableYet4758());
-        areWeBadOpcodeYet.preDeploy();
-        assertTrue(areWeBadOpcodeYet.areWeImmutableYet4758());
+        assertTrue(areWeBadOpcodeYet.areWeNotHaltingYet4758());
     }
 }
