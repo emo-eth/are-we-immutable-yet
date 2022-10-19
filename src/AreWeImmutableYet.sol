@@ -26,11 +26,10 @@ contract AreWeImmutableYet {
     }
 
     function areWeImmutableYet4758() public returns (bool weAreImmutable) {
-        address addr = address(0);
         ///@solidity memory-safe-assembly
         assembly {
             mstore(0, 0x600b5981380380925939f333FF)
-            addr := create2(0, 19, 13, 0)
+            let addr := create2(0, 19, 13, 0)
             pop(call(5010, addr, 0, 0, 0, 0, 0))
             weAreImmutable := iszero(addr)
         }
