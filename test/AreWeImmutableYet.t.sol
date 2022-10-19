@@ -12,6 +12,6 @@ contract CounterTest is Test {
     }
 
     function testAreWeImmutableYet() public {
-        assertTrue(counter.areWeImmutableYet());
+        assertFalse(counter.areWeImmutableYet());
     }
 }
